@@ -1,0 +1,20 @@
+###Object alignment tool
+#instructions
+#select the source objects then select the target object
+
+#prevents window from duplication
+if mc.window("objAligner", ex=True):
+    mc.deleteUI("objAligner", window=True)
+
+mc.window("objAligner", title="Object Alignment Tool", s=False, wh=(300, 100))
+mc.columnLayout(adj=True)
+mc.text(l="Instructions: Select source objects then target")
+mc.button(l="execute", w=80, h=20, c="aligner()")
+mc.showWindow("objAligner")
+
+
+def aligner():
+    #this creates a parent constraint with no offset
+    rpc = mc.parentConstraint()
+    #this removes the parent constraint
+    mc.delete(rpc)
